@@ -17,7 +17,7 @@
     });
   } */
 
-  let mute = document.getElementById('mute');
+/*   let mute = document.getElementById('mute');
   
   mute.onclick = function() {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
@@ -25,4 +25,57 @@
           tabs[0].id,
           {code: 'document.querySelector("#ow3 > div.T4LgNb > div > div:nth-child(5) > div.crqnQb > div.rG0ybd > div.q2u11 > div.a1GRr > div > div > div").style.pointerEvents = "none"'});
     });
-  };
+  }; */
+let mute1 = document.getElementById('mute1');
+
+let status = localStorage.getItem('status');
+if(status === 'checked'){
+  mute1.click();
+}
+
+mute1.addEventListener('click',function(e){
+  if(e.target.checked){
+    localStorage.setItem('status','checked')
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    chrome.tabs.executeScript(
+        tabs[0].id,
+        {file:'content.js'});
+    });
+  }
+  else{
+    localStorage.setItem('status','unchecked')
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+      chrome.tabs.executeScript(
+          tabs[0].id,
+          {code: 'document.querySelector("#ow3 > div.T4LgNb > div > div:nth-child(5) > div.crqnQb > div.rG0ybd > div.q2u11 > div.a1GRr > div > div > div").style.pointerEvents = "all"'});
+      });
+  }
+  
+})
+//video
+let mute2 = document.getElementById('mute2');
+
+let status1 = localStorage.getItem('status1');
+if(status1 === 'checked'){
+  mute2.click();
+}
+
+mute2.addEventListener('click',function(e){
+  if(e.target.checked){
+    localStorage.setItem('status1','checked')
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    chrome.tabs.executeScript(
+        tabs[0].id,
+        {file:'video.js'});
+    });
+  }
+  else{
+    localStorage.setItem('status1','unchecked')
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+      chrome.tabs.executeScript(
+          tabs[0].id,
+          {code: 'document.querySelector("#ow3 > div.T4LgNb > div > div:nth-child(5) > div.crqnQb > div.rG0ybd.LCXT6 > div.q2u11 > div.SfBQ6c > div > div").style.pointerEvents="all";'});
+      });
+  }
+  
+})
