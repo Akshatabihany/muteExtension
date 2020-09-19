@@ -1,0 +1,21 @@
+{
+    "name": "Conscient",
+    "version": "1.0",
+    "manifest_version": 2,
+    "description": "Build an Extension!",
+    "permissions": ["declarativeContent","storage","activeTab"],
+    "background": {
+      "scripts": ["background.js"],
+      "persistent": false
+    },
+   
+    "icons": {
+     
+      "128": "565.png"
+    },
+    "browser_action":{
+        "default_title":"bear",
+        "default_popup":"popup.html"
+    }
+
+  }
